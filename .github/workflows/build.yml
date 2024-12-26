@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - 'wip6'
+      - 'wip8'
 
 jobs:
   build_lavender:
