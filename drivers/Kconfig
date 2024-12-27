@@ -273,4 +273,7 @@ source "drivers/mfd/maxim/Kconfig" # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 source "drivers/battery/common/Kconfig" # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 source "drivers/input/sec_input/slsi/Kconfig" # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 source "drivers/usb/typec/maxim/Kconfig" # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
+# o1q
+source "drivers/vibrator/maxim/Kconfig" # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
+source "drivers/pwm/pwm-gpclk/Kconfig" # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 endmenu

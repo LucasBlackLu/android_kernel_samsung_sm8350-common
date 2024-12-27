@@ -230,3 +230,6 @@ obj-y += mfd/maxim/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 obj-y += battery/common/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 obj-y += input/sec_input/slsi/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
 obj-y += usb/typec/maxim/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
+# o1q
+obj-y += vibrator/maxim/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
+obj-y += pwm/pwm-gpclk/ # ADDED BY LEGO AUTOMATICALLY: DO NOT SUBMIT
