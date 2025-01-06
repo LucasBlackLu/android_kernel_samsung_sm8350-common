@@ -785,7 +785,7 @@ static void etr_pcie_write_work_fn(struct work_struct *work)
 		req->snd_cmpl = 1;
 
 		bytes_to_write = mhi_dev_write_channel(req);
-		if (bytes_to_write != PCIE_BLK_SIZE) {
+		if (bytes_to_write != actual) {
 			dev_err(&tmcdrvdata->csdev->dev, "Write error %d\n",
 							bytes_to_write);
 
@@ -795,7 +795,7 @@ static void etr_pcie_write_work_fn(struct work_struct *work)
 		}
 
 		mutex_lock(&byte_cntr_data->byte_cntr_lock);
-		if (byte_cntr_data->offset + actual >= tmcdrvdata->size)
+		if (byte_cntr_data->offset + actual >= tmcdrvdata->sysfs_buf->size)
 			byte_cntr_data->offset = 0;
 		else
 			byte_cntr_data->offset += actual;
@@ -874,12 +874,14 @@ struct byte_cntr *byte_cntr_init(struct amba_device *adev,
 		dev_err(dev, "Byte_cntr interrupt registration failed\n");
 		return NULL;
 	}
+	enable_irq_wake(byte_cntr_irq);
 
 	ret = byte_cntr_register_chardev(byte_cntr_data);
 	if (ret) {
 		devm_free_irq(dev, byte_cntr_irq, byte_cntr_data);
 		devm_kfree(dev, byte_cntr_data);
 		dev_err(dev, "Byte_cntr char dev registration failed\n");
+		disable_irq_wake(byte_cntr_irq);		
 		return NULL;
 	}
 
